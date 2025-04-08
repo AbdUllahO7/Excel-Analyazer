@@ -103,6 +103,13 @@ export function GuidedTour({ activeTab, onTabChange }: GuidedTourProps) {
       tab: "intelligent",
     },
     {
+      target: ".tour-ai-tools",
+      title: "AI Tools",
+      content: "Access advanced AI-powered tools for insights, natural language queries, and predictive analytics.",
+      placement: "bottom",
+      tab: "ai-tools",
+    },
+    {
       target: ".tour-templates",
       title: "Templates",
       content: "Use predefined templates for common data analysis scenarios.",

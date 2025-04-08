@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { BarChart, Filter, Table, Trash2, Upload, Wand2, TrendingUp, ArrowLeftRight } from "lucide-react"
+import { BarChart, Filter, Table, Trash2, Upload, Wand2, TrendingUp, ArrowLeftRight, BrainCircuit } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { DataUploader } from "@/components/data-uploader"
@@ -25,6 +25,7 @@ import { ServerProcessor } from "@/components/server-processor"
 import { SessionManager } from "@/components/session-manager"
 import { MultiFileManager } from "@/components/multi-file-manager"
 import { ApiConnector } from "@/components/api-connector"
+import { AITools } from "@/components/ai-tools"
 
 export function DataDashboard() {
   const [data, setData] = useState<any[]>([])
@@ -182,7 +183,7 @@ export function DataDashboard() {
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-4">
-          <TabsList className="grid grid-cols-2 md:grid-cols-8 gap-2">
+          <TabsList className="grid grid-cols-2 md:grid-cols-9 gap-2">
             <TabsTrigger value="upload" className="flex items-center gap-2 tour-upload">
               <Upload className="h-4 w-4" />
               <span className="hidden md:inline">Upload</span>
@@ -218,6 +219,10 @@ export function DataDashboard() {
             >
               <TrendingUp className="h-4 w-4" />
               <span className="hidden md:inline">Intelligent</span>
+            </TabsTrigger>
+            <TabsTrigger value="ai-tools" className="flex items-center gap-2 tour-ai-tools" disabled={!data.length}>
+              <BrainCircuit className="h-4 w-4" />
+              <span className="hidden md:inline">AI Tools</span>
             </TabsTrigger>
           </TabsList>
 
@@ -307,6 +312,10 @@ export function DataDashboard() {
 
           <TabsContent value="intelligent" className="space-y-4">
             <IntelligentAnalysis data={data} columns={columns} />
+          </TabsContent>
+
+          <TabsContent value="ai-tools" className="space-y-4">
+            <AITools data={data} columns={columns} />
           </TabsContent>
         </Tabs>
       </main>
